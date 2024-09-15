@@ -4,11 +4,11 @@ const Navbar = () => {
   return (
     <>
     {/* Major container - should be fixed*/}
-    <div className="py-2"> 
+    <div className=""> 
       {/* Container */}
-      <div className=" flex justify-around ">
+      <div className="bg-green-300 border-2 border-solid py-2 flex justify-around shadow-lg">
           {/* Logo */}
-          <div className="flex items-center text-white">
+          <div className="flex items-center text-green-600">
               <p>AUB</p>
           </div>
 
@@ -29,7 +29,7 @@ const Navbar = () => {
 
           {/* Add word */}
           <div className="flex items-center">
-              <button className="border border-solid rounded-full font-bold w-6 text-lg text-white">
+              <button className="text-green-600 border border-solid rounded-full font-bold w-6 text-lg ">
                 +
               </button>
           </div>

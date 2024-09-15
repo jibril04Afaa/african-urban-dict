@@ -10,14 +10,6 @@ const App = () => {
         <Navbar/>
         {/* Word Cards Container */}
         <div className="p-4">
-          <WordCard
-          word = "bomboclat"
-          meanings = "used when one is stressed"
-          examples = "Bomboclat. I just lost my wallet today."
-          origin = "Jamaica"
-          byUser = "blackAfrican2345"
-          dateAdded = "November 15, 2020"
-          />
 
           <WordCard
           word = "fanfooling"
@@ -26,6 +18,15 @@ const App = () => {
           origin = "Ghana"
           byUser = "charley419"
           dateAdded = "April 27, 2019"
+          />
+
+          <WordCard
+          word = "bomboclaat"
+          meanings = "used when one is stressed"
+          examples = "Bomboclat. I just lost my wallet today."
+          origin = "Jamaica"
+          byUser = "blackAfrican2345"
+          dateAdded = "November 15, 2020"
           />
 
           <WordCard
