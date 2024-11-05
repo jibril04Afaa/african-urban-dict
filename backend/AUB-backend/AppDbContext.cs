@@ -18,3 +18,7 @@ public class Word
     public string Tags { get; set; } // comma separated tags
     public string Language { get; set; } // language of the word
 }
+
+// db context for likes
+
+// db context for Users
