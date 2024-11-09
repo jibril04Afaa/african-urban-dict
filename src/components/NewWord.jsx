@@ -2,33 +2,44 @@
 const NewWord = () => {
   return (
     <>
-        <h1>New Word</h1>
+        <h1 className="text-center">New Word</h1>
         {/* Major container */}
-        <div>
+        <div className="">
             {/* Container */}
-            <div>
+            <div className="border border-solid p-4 my-4 rounded-xl bg-green-300">
+
                 {/* Word */}
-                <div>
-                    <input type="text" name="" id="" placeholder="Word"/>
+                <div className=" p-2">
+                    <input type="text" name="" id="" 
+                    placeholder="Word" 
+                    className="w-full"/>
                 </div>
 
                 {/* Definition */}
-                <div>
-                    <input type="text" name="" id="" placeholder="Type your definition here..." />
+                <div className="p-2">
+                    <input type="text" 
+                    name="" id="" 
+                    placeholder="Type your definition here..."
+                    className="w-full" />
                 </div>
 
                 {/* Example */}
-                <div>
-                    <input type="text" name="" id="" placeholder="Type an example of how it's used in a sentence..." />
+                <div className="p-2">
+                    <input type="text" 
+                    name="" id="" 
+                    placeholder="Example sentence..." 
+                    className="w-full"/>
                 </div>
 
                 {/* Tags */}
-                <div>
-                    <input type="text" placeholder="Type a list of comma-separated tags..." />
+                <div className="p-2">
+                    <input type="text" 
+                    placeholder="Type a list of comma-separated tags..."
+                    className="w-full" />
                 </div>
 
                 {/* Language */}
-                <div>
+                <div className="p-2">
                     <select name="" id="">
                         <option value="english">English</option>
                         <option value="hausa">Hausa</option>
@@ -41,7 +52,16 @@ const NewWord = () => {
                         <option value="xhosa">Xhosa</option>
                     </select>
                 </div>
+
+                <div className="mt-2 flex justify-center">
+                    <button 
+                    className="border-4 rounded-xl p-2 w-full font-bold">
+                        Submit
+                    </button>
+                </div>
             </div>
+
+
         </div>
 
 
