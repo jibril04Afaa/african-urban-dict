@@ -7,22 +7,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-var reactAppURL = "http://localhost:3000/";
 
 // CORS configuration
 builder.Services.AddCors(options => {
     options.AddPolicy("AllowSpecificOrigin", builder =>
     {
-        builder.WithOrigins(reactAppURL)
+        builder.WithOrigins("http://localhost:3000/words")
             .AllowAnyMethod()
             .AllowAnyHeader();
     });
 });
 
 var app = builder.Build();
+app.UseRouting();
 
 // enable CORS
 app.UseCors("AllowSpecificOrigin");
+
 
 // default page
 app.MapGet("/", () => "API Default Page");

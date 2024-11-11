@@ -1,8 +1,23 @@
+import { useEffect, useState } from "react"
 
 const NewWord = () => {
+    const [ words, setWords ] = useState([])
+    const submitHandler = async() => {
+        try {
+            const response = await fetch("http://localhost:5050/words")
+            if (!response.ok) {
+                const data = await response.json()
+                // setWords(data)
+                console.log(data)
+            }   
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
   return (
     <>
-        <h1 className="text-center">New Word</h1>
+        <h1 className="text-center text-bold text-white">New Word</h1>
         {/* Major container */}
         <div className="">
             {/* Container */}
@@ -55,7 +70,8 @@ const NewWord = () => {
 
                 <div className="mt-2 flex justify-center">
                     <button 
-                    className="border-4 rounded-xl p-2 w-full font-bold">
+                    className="border-4 rounded-xl p-2 w-full font-bold"
+                    onClick={submitHandler}>
                         Submit
                     </button>
                 </div>

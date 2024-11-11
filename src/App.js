@@ -10,10 +10,10 @@ const App = () => {
         <Navbar/>
 
         {/* Word Cards major container */}
-        <div className="p-4 laptop: border-2 border-yellow-200 flex justify-around ">
+        <div className="sm:block p-4 laptop:flex justify-around border-2 border-yellow-200">
 
           {/* Word Cards minor Container */}
-          <div className="border-2 border-red-600 laptop: w-1/3">
+          <div className="sm:w-full laptop:w-1/3 border-2 border-red-600 ">
 
             <WordCard
             word = "fanfooling"
@@ -44,7 +44,7 @@ const App = () => {
           </div>
 
           {/* define a new word (present in laptop display and beyond) */}
-          <div>
+          <div className="sm:hidden laptop:block">
             <NewWord/>
           </div>
         </div>
