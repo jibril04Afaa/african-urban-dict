@@ -1,15 +1,47 @@
 import { useEffect, useState } from "react"
 
+
+
 const NewWord = () => {
-    const [ words, setWords ] = useState([])
+    // "http://localhost:5050/words" 
+    // stateful variables for each field in Word DbContext model
+    const [ term, setTerm ] = useState("")
+    const [ definition, setDefinition ] = useState("")
+    const [ example, setExample ] = useState("")
+    const [ tags, setTags ] = useState("")
+    const [ language, setLanguage ] = useState("")
+
+    // sends POST request to "/words" endpoint
     const submitHandler = async() => {
         try {
-            const response = await fetch("http://localhost:5050/words")
+            const response = await fetch("http://localhost:5050/words", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    term,
+                    definition, 
+                    example,
+                    tags, 
+                    language
+                })
+            })
+
             if (!response.ok) {
-                const data = await response.json()
-                // setWords(data)
-                console.log(data)
-            }   
+                throw new Error("Failed to create new word.")
+            }
+
+            // data from POST request
+            const data = await response.json()
+            console.log(data)
+
+            // reset fields after successful submission
+            setTerm("")
+            setDefinition("")
+            setExample("")
+            setTags("")
+            setLanguage("english")
         } catch (error) {
             console.error(error)
         }
@@ -27,7 +59,9 @@ const NewWord = () => {
                 <div className=" p-2">
                     <input type="text" name="" id="" 
                     placeholder="Word" 
-                    className="w-full"/>
+                    className="w-full"
+                    value={term}
+                    onChange={(e) => setTerm(e.target.value)}/>
                 </div>
 
                 {/* Definition */}
@@ -35,7 +69,9 @@ const NewWord = () => {
                     <input type="text" 
                     name="" id="" 
                     placeholder="Type your definition here..."
-                    className="w-full" />
+                    className="w-full"
+                    value={definition}
+                    onChange={(e) => setDefinition(e.target.value)} />
                 </div>
 
                 {/* Example */}
@@ -43,19 +79,25 @@ const NewWord = () => {
                     <input type="text" 
                     name="" id="" 
                     placeholder="Example sentence..." 
-                    className="w-full"/>
+                    className="w-full"
+                    value={example}
+                    onChange={(e) => setExample(e.target.value)}
+                    />
                 </div>
 
                 {/* Tags */}
                 <div className="p-2">
                     <input type="text" 
                     placeholder="Type a list of comma-separated tags..."
-                    className="w-full" />
+                    className="w-full"
+                    value={tags}
+                    onChange={(e) => setTags(e.target.value)} />
                 </div>
 
                 {/* Language */}
                 <div className="p-2">
-                    <select name="" id="">
+                    <select name="" id="" value={language} 
+                    onChange={(e) => setLanguage(e.target.value)}>
                         <option value="english">English</option>
                         <option value="hausa">Hausa</option>
                         <option value="french">French</option>
@@ -76,7 +118,6 @@ const NewWord = () => {
                     </button>
                 </div>
             </div>
-
 
         </div>
 

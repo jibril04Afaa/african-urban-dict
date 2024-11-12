@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AUB-backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d641d0d374624c9acd967180a0f45921584240b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+593c8a1a327b3492f9fb839fe358257dcecabd4a")]
 [assembly: System.Reflection.AssemblyProductAttribute("AUB-backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AUB-backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

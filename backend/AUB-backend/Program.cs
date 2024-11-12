@@ -12,7 +12,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddCors(options => {
     options.AddPolicy("AllowSpecificOrigin", builder =>
     {
-        builder.WithOrigins("http://localhost:3000/words")
+        builder.WithOrigins("http://localhost:3000")
             .AllowAnyMethod()
             .AllowAnyHeader();
     });
