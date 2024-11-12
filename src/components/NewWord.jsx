@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import WordCard from "./WordCard"
 
 
 
@@ -9,9 +10,12 @@ const NewWord = () => {
     const [ definition, setDefinition ] = useState("")
     const [ example, setExample ] = useState("")
     const [ tags, setTags ] = useState("")
-    const [ language, setLanguage ] = useState("")
+    const [ language, setLanguage ] = useState("english")
 
-    // sends POST request to "/words" endpoint
+    // list of words
+    const [ words, setWords ] = useState([])
+
+    // sends POST request to "/words" endpoint AND adds new WordCard to virtualDOM
     const submitHandler = async() => {
         try {
             const response = await fetch("http://localhost:5050/words", {
@@ -35,6 +39,10 @@ const NewWord = () => {
             // data from POST request
             const data = await response.json()
             console.log(data)
+
+            // add new word to state array
+            setWords(previousWords=> [...previousWords, data])
+
 
             // reset fields after successful submission
             setTerm("")
@@ -121,6 +129,12 @@ const NewWord = () => {
 
         </div>
 
+        {/* Render WordCard  */}
+        <div className="">
+            {words.map((word, index) => {
+                <WordCard key={index} word={word.term}/>
+            })}
+        </div>
 
     </>
     

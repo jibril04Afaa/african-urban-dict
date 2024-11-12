@@ -37,6 +37,7 @@ const App = () => {
             word = "chale"
             meanings = "buddy/friend"
             examples = "chale how we go do am"
+        
             origin = "Ghana"
             byUser = "datoneguy"
             dateAdded = "February 12, 2017"
