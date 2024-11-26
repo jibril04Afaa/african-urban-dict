@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import WordCard from "./WordCard"
-
+import { Link } from "react-router-dom"
 
 
 const NewWord = () => {
@@ -57,7 +57,7 @@ const NewWord = () => {
 
   return (
     <>
-        <h1 className="text-center text-bold text-white">New Word</h1>
+        <h1 className="text-center text-bold">New Word</h1>
         {/* Major container */}
         <div className="">
             {/* Container */}

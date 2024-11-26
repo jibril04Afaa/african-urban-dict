@@ -1,4 +1,5 @@
-import { CiSearch } from "react-icons/ci";
+import { CiSearch } from "react-icons/ci"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
   return (
@@ -30,11 +31,13 @@ const Navbar = () => {
 
           {/* Add word */}
           <div className="flex items-center">
-              <button 
-              className="text-green-600 border-4 
-              rounded-full font-bold text-lg p-2 sm: text-sm">
-                New +
-              </button>
+            <Link to="/new-word">
+                <button 
+                className="text-green-600 border-4 
+                rounded-full font-bold text-lg p-2 sm: text-sm">
+                  New +
+                </button>
+              </Link>
           </div>
       </div>
     </div>
