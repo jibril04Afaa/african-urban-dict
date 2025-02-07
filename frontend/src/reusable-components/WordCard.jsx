@@ -1,5 +1,7 @@
 import { FaArrowUp } from "react-icons/fa6";
 import { FaArrowDown } from "react-icons/fa6";
+import { FaRegTrashCan } from "react-icons/fa6";
+import { BsPencilSquare } from "react-icons/bs";
 
 const WordCard = (props) => {
   return (
@@ -10,19 +12,23 @@ const WordCard = (props) => {
                     <div className="flex justify-between">
                         {/* Word Title */}
                         <div>
-                            <p className="font-bold">{props.wordTitle}</p>
+                            <p className="font-bold text-xl">{props.wordTitle}</p>
                         </div>
 
                         {/* Buttons */}
-                        <div>
+                        <div className="flex gap-3">
                             {/* Edit */}
-                            <div></div>
+                            <div className="cursor-pointer">
+                                <BsPencilSquare/>
+                            </div>
                             {/* Delete */}
-                            <div></div>
+                            <div className="cursor-pointer">
+                                <FaRegTrashCan/>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="flex justify-between w-6/12">
+                    <div className="flex gap-1 ">
                         {/* Origin */}
                         <div>
                             <p>{'[' + props.origin + ']'}</p>
@@ -30,7 +36,7 @@ const WordCard = (props) => {
 
                         {/* Separator */}
                         <div>
-                            <p>.</p>
+                            <p className="font-bold">.</p>
                         </div>
 
                         {/* Added by */}
@@ -40,7 +46,7 @@ const WordCard = (props) => {
 
                         {/* Separator */}
                         <div>
-                            <p>.</p>
+                            <p className="font-bold">.</p>
                         </div>
 
                         {/* Date added */}
@@ -57,9 +63,9 @@ const WordCard = (props) => {
                     </div>
                    
                    {/* Like & dislike buttons */}
-                   <div className="flex gap-4">
+                   <div className="flex gap-4 pt-4">
                     {/* Like */}
-                    <div className="border-0 pl-3 pr-3 pt-1 pb-1 rounded-lg flex justify-center items-center bg-gray-100">
+                    <div className="border-0 pl-3 pr-3 pt-1 pb-1 rounded-lg flex justify-center items-center bg-gray-100 cursor-pointer">
                         {/* Like button */}
                         <div>
                             <FaArrowUp/>
@@ -71,7 +77,7 @@ const WordCard = (props) => {
                     </div>
 
                     {/* Dislike */}
-                    <div className="border-0 pl-3 pr-3 pt-1 pb-1 rounded-lg flex justify-center items-center bg-gray-100">
+                    <div className="border-0 pl-3 pr-3 pt-1 pb-1 rounded-lg flex justify-center items-center bg-gray-100 cursor-pointer">
                         {/* Dislike button */}
                         <div>
                             <FaArrowDown/>
