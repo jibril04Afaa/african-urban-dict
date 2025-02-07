@@ -1,10 +1,12 @@
-import React from 'react'
 import NotionAvatar from '../../src/notion-avatar.png'
 import NewWord from './NewWord'
+import { useNavigate } from 'react-router-dom'
 
 const NavBar = () => {
+    const navigate = useNavigate()
   return (
     <>
+    
         <div>
             <div className='mx-auto'>
                 <div className='border-b-2 flex justify-between items-center p-4'>
@@ -17,7 +19,8 @@ const NavBar = () => {
                     <div className='flex justify-around items-center gap-4'>
                         {/* Button */}
                         <div>
-                            <button className='border-black pl-3 pr-3 pt-1 pb-1 rounded-lg bg-black text-white'>
+                            <button onClick={() => navigate('/new-word')}
+                            className='border-black pl-3 pr-3 pt-1 pb-1 rounded-lg bg-black text-white'>
                                 Add Word
                             </button>
                         </div>
