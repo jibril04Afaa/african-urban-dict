@@ -1,6 +1,6 @@
 import React from 'react'
 import NotionAvatar from '../../src/notion-avatar.png'
-
+import NewWord from './NewWord'
 
 const NavBar = () => {
   return (
@@ -17,7 +17,9 @@ const NavBar = () => {
                     <div className='flex justify-around items-center gap-4'>
                         {/* Button */}
                         <div>
-                            <button className='border-black pl-3 pr-3 pt-1 pb-1 rounded-lg bg-black text-white'>Add Word</button>
+                            <button className='border-black pl-3 pr-3 pt-1 pb-1 rounded-lg bg-black text-white'>
+                                Add Word
+                            </button>
                         </div>
 
                         {/* Notion image */}
