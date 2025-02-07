@@ -1,11 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Hero from './components/Hero'
+import NewWord from './components/NewWord'
+import Error from './components/Error'
 
 function App() {
   return (
-    <div className="border-2 bg-red-500">
-      <p className='border-2 text-center'>Hello World</p>
-    </div>
+    <>
+      <Router>
+
+        <Routes>
+          <Route path='/' element={<Hero/>}></Route> {/* Home Route*/}
+          <Route path='/new-word' element={<NewWord/>}></Route> {/* New Word Route*/}
+          <Route path='*' element={<Error/>}></Route> {/* Error Route */}
+        </Routes>
+
+      </Router>
+    </>
   );
 }
 
