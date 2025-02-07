@@ -2,10 +2,25 @@ import { FaArrowUp } from "react-icons/fa6";
 import { FaArrowDown } from "react-icons/fa6";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { BsPencilSquare } from "react-icons/bs";
+import { useState } from "react";
+
+
+
 
 const WordCard = (props) => {
+    const [ likeCounter, setLikeCounter ] = useState(0)
+    const [ dislikeCounter, setDislikeCounter ] = useState(0)
+
+    const addLike = () => {
+        setLikeCounter(likeCounter + 1)
+    }
+
+    const addDislike = () => {
+        setDislikeCounter(dislikeCounter + 1)
+    }
   return (
     <>
+    
         <div className="flex justify-center items-center pt-8">
             <div className="w-4/5">
                 <div className="border-2 flex flex-col justify-around bg-white pl-4 pr-4 pt-3 pb-3 rounded-lg">
@@ -68,11 +83,13 @@ const WordCard = (props) => {
                     <div className="border-0 pl-3 pr-3 pt-1 pb-1 rounded-lg flex justify-center items-center bg-gray-100 cursor-pointer">
                         {/* Like button */}
                         <div>
-                            <FaArrowUp/>
+                            <FaArrowUp
+                            onClick={addLike}
+                            />
                         </div>
                         {/* Like Count */}
                         <div>
-                            <p>234</p>
+                            <p>{likeCounter}</p>
                         </div>
                     </div>
 
@@ -80,11 +97,13 @@ const WordCard = (props) => {
                     <div className="border-0 pl-3 pr-3 pt-1 pb-1 rounded-lg flex justify-center items-center bg-gray-100 cursor-pointer">
                         {/* Dislike button */}
                         <div>
-                            <FaArrowDown/>
+                            <FaArrowDown
+                            onClick={addDislike}
+                            />
                         </div>
                         {/* Dislike Count */}
                         <div>
-                            <p>12</p>
+                            <p>{dislikeCounter}</p>
                         </div>
                     </div>
                    </div>
