@@ -1,5 +1,4 @@
 import React from 'react'
-import WordCard from '../reusable-components/WordCard'
 import { useNavigate } from 'react-router-dom'
 const NewWord = () => {
   const navigate = useNavigate()
