@@ -6,5 +6,6 @@ namespace backend_inner.Models;
         // constructor
         public WordContext(DbContextOptions<WordContext> options) : base(options) {}
 
+
         public DbSet<WordItem> WordItems { get; set; } = null;
     }
