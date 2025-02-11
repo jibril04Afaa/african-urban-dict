@@ -6,9 +6,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// check for connection string errors
+string ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+if (string.IsNullOrEmpty(ConnectionString))
+{
+    throw new InvalidOperationException("Connection string 'DefaultConnection' not found");
+}
+
 // Add PostgreSQL db context
 builder.Services.AddDbContext<WordContext>(options => {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseNpgsql(ConnectionString);
 });
 
 var app = builder.Build();
