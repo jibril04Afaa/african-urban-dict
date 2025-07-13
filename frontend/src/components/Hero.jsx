@@ -114,6 +114,22 @@ const Hero = () => {
   const [filteredWords, setFilteredWords] = useState(mockWords);
   const [activeFilter, setActiveFilter] = useState('all');
 
+  // Define region to country/language mappings
+  const regionMappings = {
+    'west': ['nigeria', 'ghana', 'senegal', 'mali', 'liberia', 'sierra leone', 
+             'ivory coast', 'benin', 'togo', 'gambia', 'guinea', 'guinea-bissau', 
+             'cape verde', 'naija', 'yoruba', 'igbo', 'hausa', 'akan', 'wolof'],
+    'east': ['kenya', 'ethiopia', 'tanzania', 'uganda', 'rwanda', 'burundi', 
+             'somalia', 'djibouti', 'eritrea', 'swahili', 'amharic', 'oromo'],
+    'north': ['egypt', 'morocco', 'algeria', 'tunisia', 'libya', 'sudan', 
+              'south sudan', 'mauritania', 'arabic', 'berber'],
+    'south': ['south africa', 'zimbabwe', 'zambia', 'botswana', 'namibia', 
+              'lesotho', 'eswatini', 'malawi', 'moçambique', 'zulu', 'xhosa', 
+              'afrikaans'],
+    'central': ['congo', 'dr congo', 'cameroon', 'gabon', 'chad', 'central african republic', 
+                'equatorial guinea', 'sao tome and principe', 'fang', 'sango']
+  };
+
   // Filter words based on search term and active filter
   useEffect(() => {
     let filtered = [...mockWords];
@@ -130,9 +146,11 @@ const Hero = () => {
     
     // Apply region filter
     if (activeFilter !== 'all') {
-      filtered = filtered.filter(word => 
-        word.origin.toLowerCase().includes(activeFilter.toLowerCase())
-      );
+      filtered = filtered.filter(word => {
+        const wordOrigin = word.origin.toLowerCase();
+        const regionKeywords = regionMappings[activeFilter] || [];
+        return regionKeywords.some(keyword => wordOrigin.includes(keyword));
+      });
     }
     
     setFilteredWords(filtered);
