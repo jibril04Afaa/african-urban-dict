@@ -1,9 +1,61 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import NavBar from "./NavBar";
 import SearchBar from "./SearchBar";
 import WordCard from "../reusable-components/WordCard";
+import { FaGlobeAfrica } from 'react-icons/fa';
 
-// Mock data - replace with your actual data fetching logic
+// African color palette
+const colors = {
+  earth: '#8B4513',        // Rich brown (African soil)
+  gold: '#FFD700',         // Gold (African wealth)
+  kenteGreen: '#008000',   // Green (African vegetation)
+  adinkraRed: '#B22222',   // Deep red (African sunsets)
+  kenteBlue: '#1E90FF',    // Bright blue (African skies)
+  mudCloth: '#F5DEB3',     // Earthy beige (African textiles)
+  kenteYellow: '#FFD700',  // Sun yellow
+  kenteBlack: '#000000',   // Rich black
+};
+
+// Floating African globe
+const FloatingGlobe = () => (
+  <motion.div 
+    className="absolute top-20 right-10 w-32 h-32 flex items-center justify-center z-10"
+    animate={{
+      y: [0, 15, 0],
+    }}
+    transition={{
+      duration: 8,
+      repeat: Infinity,
+      repeatType: "reverse",
+      ease: "easeInOut"
+    }}
+  >
+    <FaGlobeAfrica style={{ 
+      width: '100%',
+      height: '100%',
+      color: colors.earth, 
+      opacity: 0.7,
+      transform: 'rotate(15deg)'
+    }} />
+  </motion.div>
+)
+
+
+
+
+// African patterns as SVGs
+const AfricanPattern = () => (
+  <div className="absolute inset-0 overflow-hidden opacity-5">
+    <div className="absolute inset-0" style={{
+      backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29-22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z\' fill=\'%238B4513\' fill-opacity=\'0.4\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")'
+    }}></div>
+  </div>
+);
+
+// Mock data with more African words
+// In Hero.jsx, replace the mockWords array with:
+
 const mockWords = [
   {
     id: 1,
@@ -55,72 +107,165 @@ const mockWords = [
     likes: 12,
     dislikes: 2
   }
-]
+];
 
 const Hero = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredWords, setFilteredWords] = useState(mockWords);
+  const [activeFilter, setActiveFilter] = useState('all');
 
-  // Filter words based on search term
+  // Filter words based on search term and active filter
   useEffect(() => {
-    if (!searchTerm.trim()) {
-      setFilteredWords(mockWords);
-      return;
+    let filtered = [...mockWords];
+    
+    // Apply search filter
+    if (searchTerm.trim()) {
+      const lowercasedSearch = searchTerm.toLowerCase();
+      filtered = filtered.filter(word => 
+        word.wordTitle.toLowerCase().includes(lowercasedSearch) ||
+        word.wordDef.toLowerCase().includes(lowercasedSearch) ||
+        word.origin.toLowerCase().includes(lowercasedSearch)
+      );
     }
-
-    const lowercasedSearch = searchTerm.toLowerCase();
-    const filtered = mockWords.filter(word => 
-      word.wordTitle.toLowerCase().includes(lowercasedSearch) ||
-      word.wordDef.toLowerCase().includes(lowercasedSearch) ||
-      word.origin.toLowerCase().includes(lowercasedSearch)
-    );
+    
+    // Apply region filter
+    if (activeFilter !== 'all') {
+      filtered = filtered.filter(word => 
+        word.origin.toLowerCase().includes(activeFilter.toLowerCase())
+      );
+    }
+    
     setFilteredWords(filtered);
-  }, [searchTerm]);
+  }, [searchTerm, activeFilter]);
 
   const handleSearch = (term) => {
     setSearchTerm(term);
   };
 
-  return (
-    <div>
-      <div>
-        <div className="bg-gray-100 min-h-screen">
-          {/* Navbar */}
-          <div>
-            <NavBar />
-          </div>
+  const regions = [
+    { id: 'all', name: 'All Regions' },
+    { id: 'west', name: 'West Africa' },
+    { id: 'east', name: 'East Africa' },
+    { id: 'north', name: 'North Africa' },
+    { id: 'south', name: 'Southern Africa' },
+    { id: 'central', name: 'Central Africa' }
+  ];
 
+  return (
+    <div className="min-h-screen relative overflow-hidden" style={{ 
+      background: `linear-gradient(135deg, ${colors.mudCloth} 0%, ${colors.kenteBlue}10 100%)`
+    }}>
+      {/* Background elements */}
+      <AfricanPattern />
+      <FloatingGlobe />
+      
+      {/* Floating African symbols */}
+      <motion.div 
+        className="absolute top-20 right-10 w-32 h-32"
+        animate={{
+          y: [0, 15, 0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut"
+        }}
+      >
+        <img 
+          src="/african-symbol-1.png" 
+          alt="African Adinkra symbol"
+          className="w-full h-full object-contain opacity-70"
+          onError={(e) => {
+            e.target.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOEI0NTEzIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4='
+          }}
+        />
+      </motion.div>
+
+      <div className="relative z-10">
+        <NavBar />
+
+        {/* Hero Section */}
+        <div className="text-center py-12 px-4">
+          <motion.h1 
+            className="text-5xl font-bold mb-6"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            style={{ color: colors.earth }}
+          >
+            African Urban Dictionary
+          </motion.h1>
+          <p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: colors.kenteBlack }}>
+            Discover the rich tapestry of African languages, slang, and expressions
+          </p>
+          
           {/* Search Bar */}
-          <div>
+          <div className="max-w-2xl mx-auto mb-8">
             <SearchBar 
               onSearch={handleSearch}
               placeholder="Search for words, definitions, or origins..."
             />
           </div>
 
-          {/* Words List */}
-          <div className="pb-8">
-            {filteredWords.length > 0 ? (
-              filteredWords.map(word => (
-                <WordCard
-                  key={word.id}
-                  wordTitle={word.wordTitle}
-                  origin={word.origin}
-                  username={word.username}
-                  dateAdded={word.dateAdded}
-                  wordDef={word.wordDef}
-                  likes={word.likes}
-                  dislikes={word.dislikes}
-                  id={word.id}
-                />
-              ))
-            ) : (
-              <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">No words found matching "{searchTerm}"</p>
-              </div>
-            )}
+          {/* Region Filter */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8 px-4">
+            {regions.map(region => (
+              <button
+                key={region.id}
+                onClick={() => setActiveFilter(region.id)}
+                className={`px-4 py-2 rounded-full font-medium transition-all ${
+                  activeFilter === region.id 
+                    ? 'text-white' 
+                    : 'bg-white text-gray-800 hover:bg-gray-100'
+                }`}
+                style={{
+                  backgroundColor: activeFilter === region.id ? colors.earth : 'white',
+                  border: `2px solid ${colors.earth}`
+                }}
+              >
+                {region.name}
+              </button>
+            ))}
           </div>
         </div>
+
+        {/* Words Grid */}
+        <div className="container mx-auto px-4 pb-16 max-w-4xl">
+          {filteredWords.length > 0 ? (
+            <div className="space-y-6">
+              {filteredWords.map((word, index) => (
+                <motion.div
+                  key={word.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="w-full"
+                >
+                  <WordCard {...word} />
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <p className="text-xl" style={{ color: colors.earth }}>
+                No words found matching your search. Be the first to add one!
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Footer */}
+        <footer className="py-8 text-center" style={{ backgroundColor: colors.earth, color: 'white' }}>
+          <p>© {new Date().getFullYear()} African Urban Dictionary. Celebrating the richness of African languages.</p>
+          <div className="mt-4 flex justify-center space-x-4">
+            <a href="#" className="hover:underline">About</a>
+            <span>•</span>
+            <a href="#" className="hover:underline">Contribute</a>
+            <span>•</span>
+            <a href="#" className="hover:underline">Contact</a>
+          </div>
+        </footer>
       </div>
     </div>
   );
