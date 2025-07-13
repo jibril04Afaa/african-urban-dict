@@ -1,3 +1,4 @@
 {
-    "dotnet.defaultSolution": "backend-inner.sln"
+    "dotnet.defaultSolution": "backend-inner.sln",
+    "java.compile.nullAnalysis.mode": "automatic"
 }
