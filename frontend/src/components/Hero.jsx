@@ -57,55 +57,151 @@ const AfricanPattern = () => (
 // In Hero.jsx, replace the mockWords array with:
 
 const mockWords = [
+  // West African Slang
   {
     id: 1,
     wordTitle: "Wahala",
-    origin: "Nigerian",
-    username: "username123",
-    dateAdded: "May 15, 2009",
-    wordDef: "Trouble or problem.",
-    likes: 24,
-    dislikes: 2
+    wordDef: "Trouble or problems",
+    example: "I don't have time for your wahala today.",
+    origin: "Nigerian Pidgin",
+    username: "user123",
+    dateAdded: "2023-05-15",
+    likes: 42,
+    dislikes: 3,
+    isLiked: false,
+    isDisliked: false,
   },
   {
     id: 2,
     wordTitle: "Bomboclaat",
-    origin: "Jamaican",
-    username: "rastaman34",
-    dateAdded: "Sep 12, 2019",
-    wordDef: "Used when one is stressed.",
-    likes: 15,
-    dislikes: 3
+    wordDef: "An exclamation of surprise, frustration, or emphasis",
+    example: "Bomboclaat! You scared me!",
+    origin: "Jamaican Patois",
+    username: "rasta_king",
+    dateAdded: "2023-04-10",
+    likes: 35,
+    dislikes: 5,
+    isLiked: false,
+    isDisliked: false
   },
   {
     id: 3,
     wordTitle: "Chale",
-    origin: "Ghanaian",
-    username: "egglover4eva",
-    dateAdded: "Jan 05, 2012",
-    wordDef: "Buddy or friend. Chale how we go do am.",
-    likes: 32,
-    dislikes: 1
+    wordDef: "Friend or buddy",
+    example: "Chale, let's go!",
+    origin: "Ghanaian Pidgin",
+    username: "gh_king",
+    dateAdded: "2023-03-15",
+    likes: 28,
+    dislikes: 2,
+    isLiked: false,
+    isDisliked: false
   },
   {
     id: 4,
     wordTitle: "Sabi",
+    wordDef: "To know or understand",
+    example: "I sabi the way to the market.",
     origin: "Nigerian Pidgin",
-    username: "pidginmaster",
-    dateAdded: "Mar 22, 2015",
-    wordDef: "To know or to be able to do something.",
-    likes: 18,
-    dislikes: 0
+    username: "naija_boy",
+    dateAdded: "2023-02-20",
+    likes: 31,
+    dislikes: 1,
+    isLiked: false,
+    isDisliked: false
   },
   {
     id: 5,
     wordTitle: "Tua",
-    origin: "Ghanaian",
-    username: "ghfan99",
-    dateAdded: "Jul 08, 2018",
-    wordDef: "To put or place something somewhere.",
-    likes: 12,
-    dislikes: 2
+    wordDef: "To throw away or discard",
+    example: "Just tua that old thing.",
+    origin: "Ghanaian Pidgin",
+    username: "gh_man",
+    dateAdded: "2023-01-15",
+    likes: 25,
+    dislikes: 1,
+    isLiked: false,
+    isDisliked: false
+  },
+  // East African Slang
+  {
+    id: 6,
+    wordTitle: "Mambo",
+    wordDef: "What's up? (Greeting)",
+    example: "Mambo vipi, rafiki yangu? (What's up, my friend?)",
+    origin: "Swahili (East Africa)",
+    username: "swahili_learner",
+    dateAdded: "2023-03-20",
+    likes: 45,
+    dislikes: 2,
+    isLiked: false,
+    isDisliked: false
+  },
+  {
+    id: 7,
+    wordTitle: "Sawa",
+    wordDef: "Okay/All right",
+    example: "Sawa, nitaonana nawe kesho. (Okay, see you tomorrow)",
+    origin: "Swahili (East Africa)",
+    username: "kenyan_explorer",
+    dateAdded: "2023-04-05",
+    likes: 38,
+    dislikes: 1,
+    isLiked: false,
+    isDisliked: false
+  },
+  {
+    id: 8,
+    wordTitle: "Mzungu",
+    wordDef: "Foreigner (originally meaning someone who wanders without purpose)",
+    example: "That mzungu is trying to speak Swahili!",
+    origin: "East Africa",
+    username: "tanzania_lover",
+    dateAdded: "2023-02-18",
+    likes: 52,
+    dislikes: 8,
+    isLiked: false,
+    isDisliked: false
+  },
+  // North African Slang
+  {
+    id: 9,
+    wordTitle: "Yalla",
+    wordDef: "Let's go/Hurry up",
+    example: "Yalla, we're going to be late!",
+    origin: "Arabic (North Africa)",
+    username: "cairo_dweller",
+    dateAdded: "2023-05-10",
+    likes: 42,
+    dislikes: 1,
+    isLiked: false,
+    isDisliked: false
+  },
+  {
+    id: 10,
+    wordTitle: "Khalas",
+    wordDef: "Enough/Stop it",
+    example: "Khalas, I don't want to argue anymore.",
+    origin: "Arabic (North Africa)",
+    username: "maghreb_man",
+    dateAdded: "2023-04-22",
+    likes: 37,
+    dislikes: 0,
+    isLiked: false,
+    isDisliked: false
+  },
+  {
+    id: 11,
+    wordTitle: "Habibi",
+    wordDef: "My love/My dear (term of endearment)",
+    example: "Shukran, habibi! (Thank you, my dear!)",
+    origin: "Arabic (North Africa)",
+    username: "desert_rose",
+    dateAdded: "2023-03-15",
+    likes: 68,
+    dislikes: 0,
+    isLiked: false,
+    isDisliked: false
   }
 ];
 
