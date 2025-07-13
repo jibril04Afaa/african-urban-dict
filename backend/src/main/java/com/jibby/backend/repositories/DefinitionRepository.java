@@ -1,8 +1,7 @@
 package com.jibby.backend.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-import com.jibby.backend.entity.Definition;
+import com.jibby.backend.entity.DefinitionEntity;
 
-public interface DefinitionRepository extends JpaRepository<Definition, Long> {
+public interface DefinitionRepository extends JpaRepository<DefinitionEntity, Long> {
 }

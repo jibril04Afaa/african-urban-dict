@@ -4,24 +4,26 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Definition {
+public class DefinitionEntity {
     @Id
     private Long id;
     private String word;
     private String region;
+    private String language;
     private String username;
     private String wordDefinition;
     private String exampleUsage;
 
     // Constructors
-    public Definition() {}
+    public DefinitionEntity() {}
 
-    public Definition(String exampleUsage, String wordDefinition, String username, String word, String region) {
+    public DefinitionEntity(String exampleUsage, String wordDefinition, String username, String word, String region, String language) {
         this.exampleUsage = exampleUsage;
         this.wordDefinition = wordDefinition;
         this.username = username;
         this.word = word;
         this.region = region;
+        this.language = language;
     }
 
     public String getExampleUsage() {
@@ -70,5 +72,13 @@ public class Definition {
 
     public Long getId() {
         return id;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getLanguage() {
+        return language;
     }
 }
