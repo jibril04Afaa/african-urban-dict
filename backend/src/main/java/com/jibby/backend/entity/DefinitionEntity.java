@@ -1,29 +1,37 @@
 package com.jibby.backend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "Definition")
+@Table(name = "Definition_Table")
 public class DefinitionEntity {
     @Id
+    @SequenceGenerator(name = "Word_Definition_sequence", sequenceName = "Word_Definition_sequence",allocationSize = 1)
+
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "")
+    @Column(name = "id", updatable = false)
     private Long id;
+    @Column(unique = true, nullable = false)
     private String word;
     private String region;
     private String language;
     private String username;
+//    @Column(name = "word definition")
     private String wordDefinition;
+//    @Column(name = "example usage")
     private String exampleUsage;
 
     // Constructors
     public DefinitionEntity() {}
 
-    public DefinitionEntity(String exampleUsage, String wordDefinition, String username, String word, String region, String language) {
+    public DefinitionEntity(Long id, String exampleUsage, String wordDefinition, String username, String word, String region, String language) {
         this.exampleUsage = exampleUsage;
         this.wordDefinition = wordDefinition;
         this.username = username;
         this.word = word;
         this.region = region;
         this.language = language;
+        this.id = id;
     }
 
     public String getExampleUsage() {
@@ -81,4 +89,5 @@ public class DefinitionEntity {
     public String getLanguage() {
         return language;
     }
+
 }
